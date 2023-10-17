@@ -17,7 +17,7 @@ import NestjsLoggerServiceAdapter from '@nestjs-logger/shared/logger/infrastruct
 import SlackTransport from '@nestjs-logger/shared/logger/infrastructure/winston/transports/slackTransport';
 import ConsoleTransport from '@nestjs-logger/shared/logger/infrastructure/winston/transports/consoleTransport';
 import * as morgan from 'morgan';
-import LoggerContextWrapper from '@nestjs-logger/shared/logger/infrastructure/loggerContextWrapper';
+import LoggerContextWrapper from '@nestjs-logger/shared/logger/infrastructure/nestjs/loggerContextWrapper';
 import FileTransport from '@nestjs-logger/shared/logger/infrastructure/winston/transports/fileTransport';
 import { ConfigService } from '@nestjs-logger/shared/config/domain/services/configService';
 
