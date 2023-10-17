@@ -1,8 +1,8 @@
 import { ConsoleLogger } from '@nestjs/common';
-import Logger from '@app/logger/domain/logger/logger';
+import Logger from '@nestjs-logger/shared/logger/domain/logger';
 import { LoggerService } from '@nestjs/common/services/logger.service';
 
-export default class NestjLoggerServiceAdapter
+export default class NestjsLoggerServiceAdapter
   extends ConsoleLogger
   implements LoggerService
 {

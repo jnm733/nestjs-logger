@@ -18,36 +18,12 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app/logger": [
-        "libs/logger/src"
-      ],
-      "@app/logger/*": [
-        "libs/logger/src/*"
-      ],
-      "@app/shared": [
+      "@nestjs-logger/shared": [
         "libs/shared/src"
       ],
-      "@app/shared/*": [
+      "@nestjs-logger/shared/*": [
         "libs/shared/src/*"
       ],
-      "@app/sharedd": [
-        "libs/sharedd/src"
-      ],
-      "@app/sharedd/*": [
-        "libs/sharedd/src/*"
-      ],
-      "@app/nestjs": [
-        "libs/nestjs/src"
-      ],
-      "@app/nestjs/*": [
-        "libs/nestjs/src/*"
-      ],
-      "@app/config": [
-        "libs/config/src"
-      ],
-      "@app/config/*": [
-        "libs/config/src/*"
-      ]
     }
   }
 }

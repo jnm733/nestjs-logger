@@ -5,33 +5,27 @@ import {
   Module,
   NestModule,
 } from '@nestjs/common';
+
 import WinstonLogger, {
-  WinstonLoggerProvidersKey,
-} from '@app/logger/infrastructure/logger/winston/winstonLogger';
+  WinstonLoggerTransportsKey,
+} from '@nestjs-logger/shared/logger/infrastructure/winston/winstonLogger';
 import Logger, {
   LoggerBaseKey,
   LoggerKey,
-} from '@app/logger/domain/logger/logger';
-import NestjLoggerServiceAdapter from '@app/logger/infrastructure/logger/nestjs/nestjLoggerServiceAdapter';
-import SlackTransport from '@app/logger/infrastructure/logger/winston/transports/slackTransport';
-import ConsoleTransport from '@app/logger/infrastructure/logger/winston/transports/consoleTransport';
+} from '@nestjs-logger/shared/logger/domain/logger';
+import NestjsLoggerServiceAdapter from '@nestjs-logger/shared/logger/infrastructure/nestjs/nestjsLoggerServiceAdapter';
+import SlackTransport from '@nestjs-logger/shared/logger/infrastructure/winston/transports/slackTransport';
+import ConsoleTransport from '@nestjs-logger/shared/logger/infrastructure/winston/transports/consoleTransport';
 import * as morgan from 'morgan';
-import LoggerContextWrapper from '@app/logger/infrastructure/logger/loggerContextWrapper';
-import FileTransport from '@app/logger/infrastructure/logger/winston/transports/fileTransport';
-import { RequestContextModule } from 'nestjs-request-context';
-import { APP_INTERCEPTOR } from '@nestjs/core';
-import { ContextInterceptor } from '@app/shared/infrastructure/nestjs/interceptors/contextInterceptor';
-import { ConfigService } from '@app/config/domain/services/configService';
+import LoggerContextWrapper from '@nestjs-logger/shared/logger/infrastructure/loggerContextWrapper';
+import FileTransport from '@nestjs-logger/shared/logger/infrastructure/winston/transports/fileTransport';
+import { ConfigService } from '@nestjs-logger/shared/config/domain/services/configService';
 
 @Global()
 @Module({
-  imports: [RequestContextModule],
+  imports: [],
   controllers: [],
   providers: [
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: ContextInterceptor,
-    },
     {
       provide: LoggerBaseKey,
       useClass: WinstonLogger,
@@ -41,12 +35,13 @@ import { ConfigService } from '@app/config/domain/services/configService';
       useClass: LoggerContextWrapper,
     },
     {
-      provide: NestjLoggerServiceAdapter,
-      useFactory: (logger: Logger) => new NestjLoggerServiceAdapter(logger),
+      provide: NestjsLoggerServiceAdapter,
+      useFactory: (logger: Logger) => new NestjsLoggerServiceAdapter(logger),
       inject: [LoggerKey],
     },
+
     {
-      provide: WinstonLoggerProvidersKey,
+      provide: WinstonLoggerTransportsKey,
       useFactory: (configService: ConfigService) => {
         const transports = [];
 
@@ -67,7 +62,7 @@ import { ConfigService } from '@app/config/domain/services/configService';
       inject: [ConfigService],
     },
   ],
-  exports: [LoggerKey, NestjLoggerServiceAdapter],
+  exports: [LoggerKey, NestjsLoggerServiceAdapter],
 })
 export class LoggerModule implements NestModule {
   public constructor(

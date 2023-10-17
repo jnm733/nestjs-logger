@@ -1,5 +1,5 @@
 import * as winston from 'winston';
-import { LogLevel } from '@app/logger/domain/logger/log';
+import { LogLevel } from '@nestjs-logger/shared/logger/domain/log';
 
 enum LogColors {
   red = '\x1b[31m',

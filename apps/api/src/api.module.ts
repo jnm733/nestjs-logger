@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ApiController } from './api.controller';
 import { ApiService } from './api.service';
-import { LoggerModule } from '@app/logger/infrastructure/logger/nestjs/loggerModule';
-import { ConfigModule } from '@app/config/infrastructure/nestjs/configModule';
+import { LoggerModule } from '@nestjs-logger/shared/logger/infrastructure/nestjs/loggerModule';
+import { ConfigModule } from '@nestjs-logger/shared/config/infrastructure/nestjs/configModule';
+import { ContextModule } from '@nestjs-logger/shared/context/infrastructure/nestjs/contextModule';
 
 @Module({
-  imports: [LoggerModule, ConfigModule],
+  imports: [LoggerModule, ConfigModule, ContextModule],
   controllers: [ApiController],
   providers: [ApiService],
 })

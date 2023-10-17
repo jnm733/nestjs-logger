@@ -1,16 +1,16 @@
 import * as winston from 'winston';
 import { Inject, Injectable } from '@nestjs/common';
-import { LogData, LogLevel } from '@app/logger/domain/logger/log';
-import Logger from '@app/logger/domain/logger/logger';
+import { LogData, LogLevel } from '@nestjs-logger/shared/logger/domain/log';
+import Logger from '@nestjs-logger/shared/logger/domain/logger';
 
-export const WinstonLoggerProvidersKey = Symbol();
+export const WinstonLoggerTransportsKey = Symbol();
 
 @Injectable()
 export default class WinstonLogger implements Logger {
   private logger: winston.Logger;
 
   public constructor(
-    @Inject(WinstonLoggerProvidersKey) transports: winston.transport[],
+    @Inject(WinstonLoggerTransportsKey) transports: winston.transport[],
   ) {
     // Setting log levels for winston
     const levels: any = {};

@@ -1,5 +1,5 @@
 import SlackHook from 'winston-slack-webhook-transport';
-import { LogLevel } from '@app/logger/domain/logger/log';
+import { LogLevel } from '@nestjs-logger/shared/logger/domain/log';
 
 export default class SlackTransport {
   public static create(webhookUrl: string) {

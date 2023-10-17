@@ -25,7 +25,7 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "morgan": "^1.10.0",
-    "nestjs-request-context": "^3.0.0",
+    "nestjs-cls": "^3.5.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
     "uuid": "^9.0.0",
@@ -80,11 +80,11 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@app/shared(|/.*)$": "<rootDir>/libs/shared/src/$1",
-      "^@app/logger(|/.*)$": "<rootDir>/libs/logger/src/$1",
-      "^@app/sharedd(|/.*)$": "<rootDir>/libs/sharedd/src/$1",
-      "^@app/nestjs(|/.*)$": "<rootDir>/libs/nestjs/src/$1",
-      "^@app/config(|/.*)$": "<rootDir>/libs/config/src/$1"
+      "^@nestjs-logger/shared(|/.*)$": "<rootDir>/libs/shared/src/$1",
+      "^@nestjs-logger/logger(|/.*)$": "<rootDir>/libs/logger/src/$1",
+      "^@nestjs-logger/sharedd(|/.*)$": "<rootDir>/libs/sharedd/src/$1",
+      "^@nestjs-logger/nestjs(|/.*)$": "<rootDir>/libs/nestjs/src/$1",
+      "^@nestjs-logger/config(|/.*)$": "<rootDir>/libs/config/src/$1"
     }
   }
 }

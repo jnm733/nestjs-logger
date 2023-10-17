@@ -1,9 +1,13 @@
 import { Inject, Injectable, Scope } from '@nestjs/common';
 import { INQUIRER } from '@nestjs/core';
-import Logger, { LoggerBaseKey } from '@app/logger/domain/logger/logger';
-import { LogData, LogLevel } from '@app/logger/domain/logger/log';
+import Logger, {
+  LoggerBaseKey,
+} from '@nestjs-logger/shared/logger/domain/logger';
+import { LogData, LogLevel } from '@nestjs-logger/shared/logger/domain/log';
 import { ConfigService } from '@nestjs/config';
-import { RequestContextService } from '@app/shared/infrastructure/nestjs/services/RequestContextService';
+import ContextStorageService, {
+  ContextStorageServiceKey,
+} from '@nestjs-logger/shared/context/domain/interfaces/contextStorageService';
 
 @Injectable({ scope: Scope.TRANSIENT })
 export default class LoggerContextWrapper implements Logger {
@@ -16,6 +20,8 @@ export default class LoggerContextWrapper implements Logger {
     @Inject(LoggerBaseKey) private logger: Logger,
     configService: ConfigService,
     @Inject(INQUIRER) parentClass: object,
+    @Inject(ContextStorageServiceKey)
+    private contextStorageService: ContextStorageService,
   ) {
     // Set the source class from the parent class
     this.sourceClass = parentClass?.constructor?.name;
@@ -67,7 +73,7 @@ export default class LoggerContextWrapper implements Logger {
       app: data?.app || this.app,
       sourceClass: data?.sourceClass || this.sourceClass,
       correlationId:
-        data?.correlationId || RequestContextService.getCorrelationId(),
+        data?.correlationId || this.contextStorageService.getContextId(),
     };
   }
 

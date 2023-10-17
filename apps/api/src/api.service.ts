@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import Logger, { LoggerKey } from '@app/logger/domain/logger/logger';
+import Logger, { LoggerKey } from '@nestjs-logger/shared/logger/domain/logger';
 
 @Injectable()
 export class ApiService {

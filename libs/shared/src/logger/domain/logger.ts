@@ -1,4 +1,4 @@
-import { LogData, LogLevel } from '@app/logger/domain/logger/log';
+import { LogData, LogLevel } from '@nestjs-logger/shared/logger/domain/log';
 
 export const LoggerBaseKey = Symbol();
 export const LoggerKey = Symbol();
