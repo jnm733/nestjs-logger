@@ -12,6 +12,11 @@ export default class WinstonLogger implements Logger {
   public constructor(
     @Inject(WinstonLoggerTransportsKey) transports: winston.transport[],
   ) {
+    // Create winston logger
+    this.logger = winston.createLogger(this.getLoggerFormatOptions(transports));
+  }
+
+  private getLoggerFormatOptions(transports: winston.transport[]) {
     // Setting log levels for winston
     const levels: any = {};
     let cont = 0;
@@ -20,8 +25,7 @@ export default class WinstonLogger implements Logger {
       cont++;
     });
 
-    // Create winston logger
-    this.logger = winston.createLogger({
+    return {
       level: LogLevel.Debug,
       levels: levels,
       format: winston.format.combine(
@@ -54,7 +58,7 @@ export default class WinstonLogger implements Logger {
       transports: transports,
       exceptionHandlers: transports,
       rejectionHandlers: transports,
-    });
+    };
   }
 
   public log(

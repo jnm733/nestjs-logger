@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { ApiModule } from './api.module';
+import { ApiModule } from './apiModule';
 import NestjsLoggerServiceAdapter from '@nestjs-logger/shared/logger/infrastructure/nestjs/nestjsLoggerServiceAdapter';
 
 async function bootstrap() {
