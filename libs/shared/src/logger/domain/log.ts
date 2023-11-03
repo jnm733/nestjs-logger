@@ -8,18 +8,18 @@ export enum LogLevel {
 }
 
 export interface Log {
-  timestamp: number;
-  level: LogLevel;
-  message: string;
-  data: LogData;
+  timestamp: number; // Unix timestamp
+  level: LogLevel; // Log level
+  message: string; // Log message
+  data: LogData; // Log data
 }
 
 export interface LogData {
-  organization?: string;
-  context?: string;
-  app?: string;
-  sourceClass?: string;
-  correlationId?: string;
-  error?: Error;
-  props?: NodeJS.Dict<any>;
+  organization?: string; // Organization or project name
+  context?: string; // Bounded Context name
+  app?: string; // Application or Microservice name
+  sourceClass?: string; // Classname of the source
+  correlationId?: string; // Correlation ID
+  error?: Error; // Error object
+  props?: NodeJS.Dict<any>; // Additional custom properties
 }

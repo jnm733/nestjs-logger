@@ -10,7 +10,7 @@ import ContextStorageService, {
 } from '@nestjs-logger/shared/context/domain/interfaces/contextStorageService';
 
 @Injectable({ scope: Scope.TRANSIENT })
-export default class LoggerContextWrapper implements Logger {
+export default class LoggerService implements Logger {
   private sourceClass: string;
   private organization: string;
   private context: string;
