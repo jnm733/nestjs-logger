@@ -12,6 +12,8 @@
 
 This project implements a production-ready logger for Nest.js applications using Winston and Morgan on a clean architecture (Hexagonal Architecture).
 
+You can read a detailed explanation of the project on the following article: https://medium.com/p/d03e3bb56772/edit
+
 That implements a production-ready system advanced or basic Microservices or Monoliths projects applying concepts like:
 
 * Correlation IDs
