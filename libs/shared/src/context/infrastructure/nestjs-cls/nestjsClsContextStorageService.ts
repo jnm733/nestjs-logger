@@ -1,5 +1,5 @@
 import ContextStorageService from '@nestjs-logger/shared/context/domain/interfaces/contextStorageService';
-import { ClsService } from 'nestjs-cls';
+import { CLS_ID, ClsService } from 'nestjs-cls';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
@@ -10,6 +10,10 @@ export default class NestjsClsContextStorageService
 
   public get<T>(key: string): T | undefined {
     return this.cls.get(key);
+  }
+
+  public setContextId(id: string) {
+    this.cls.set(CLS_ID, id);
   }
 
   public getContextId(): string | undefined {
