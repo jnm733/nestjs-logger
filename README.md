@@ -110,4 +110,4 @@ We will continue working on this project to add new features
 
 PRs are welcome!
 
-- [ ] Add testing.
+- [ X ] Add testing.
