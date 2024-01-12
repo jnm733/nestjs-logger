@@ -1,8 +1,6 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
+import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import { ApiHttpController } from "./apiHttpController";
-import { ApiService } from "./apiService";
 import { ApiModule } from './apiModule';
 
 describe('ApiHttpController', () => {
