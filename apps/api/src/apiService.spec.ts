@@ -18,6 +18,6 @@ describe('ApiService', () => {
         const result = await apiService.getHello();
         const lengthResult = 12;
         expect(result).toBeDefined();
-        expect(result).toBeLessThanOrEqual(lengthResult);
+        expect(result.length).toBeLessThanOrEqual(lengthResult);
     });
 });
