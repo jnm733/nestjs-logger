@@ -7,8 +7,6 @@ import { ApiModule } from './apiModule';
 
 describe('ApiHttpController', () => {
     let app: INestApplication;
-    let apiHttpControler: ApiHttpController;
-    let apiService: ApiService;
 
     beforeAll(async ()=> {
         const module: TestingModule = await Test.createTestingModule({
